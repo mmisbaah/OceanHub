@@ -34,6 +34,15 @@ export default function Home() {
         <p className="dhivehi" lang="dv" dir="rtl">އައްސަލާމު ޢަލައިކުމް!</p>
         <p className="kicker">ONE OCEAN · MANY ADVENTURES</p>
         <h1>Your English journey<br /><em>starts here.</em></h1>
+        <div className="quick-launch" aria-label="Quick app launcher">
+          {apps.map((app) => (
+            <a className="quick-app" href={app.href} key={`quick-${app.name}`}>
+              <span className={`quick-icon ${app.className}`} aria-hidden="true">{app.icon}</span>
+              <strong>{app.name}</strong>
+              <span className="enter">Enter</span>
+            </a>
+          ))}
+        </div>
         <p className="intro">Choose an adventure to learn, play and grow—surrounded by the islands, reefs and stories children know and love.</p>
         <a className="primary" href="#apps">Choose an adventure <span>↓</span></a>
       </section>
