@@ -5,7 +5,7 @@ const apps = [
     language: "English",
     eyebrow: "Lessons · Stories · Quizzes",
     description: "Follow the Maldivian English curriculum from Grade 1 to Grade 5 with guided lessons and practice.",
-    href: "https://oceanlearn-maldives.mohamedmisbaah.chatgpt.site/",
+    href: "https://english.atollingo.com/",
     className: "learn",
   },
   {
@@ -14,7 +14,7 @@ const apps = [
     language: "English",
     eyebrow: "Games · Challenges · Rewards",
     description: "Build English skills through playful island adventures, progressive levels, stars and badges.",
-    href: "https://oceanplay-maldives.mohamedmisbaah.chatgpt.site/",
+    href: "https://play.atollingo.com/",
     className: "play",
   },
   {
@@ -23,7 +23,7 @@ const apps = [
     language: "Arabic · العربية",
     eyebrow: "Learn · Practise · Play",
     description: "Learn Arabic letters, words and communication through a grade-based Maldivian learning path.",
-    href: "https://oceanarabic-maldives.mohamedmisbaah.chatgpt.site/",
+    href: "https://arabic.atollingo.com/",
     className: "arabic-app",
   },
 ];

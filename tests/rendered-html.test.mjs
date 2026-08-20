@@ -33,10 +33,11 @@ test("links every live language app and keeps source UTF-8 clean", async () => {
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
   ]);
   for (const url of [
-    "https://oceanlearn-maldives.mohamedmisbaah.chatgpt.site/",
-    "https://oceanplay-maldives.mohamedmisbaah.chatgpt.site/",
-    "https://oceanarabic-maldives.mohamedmisbaah.chatgpt.site/",
+    "https://english.atollingo.com/",
+    "https://play.atollingo.com/",
+    "https://arabic.atollingo.com/",
   ]) assert.ok(page.includes(url), `missing app link: ${url}`);
+  assert.doesNotMatch(page, /chatgpt\.site/i);
   assert.doesNotMatch(page + layout, /Ã|Â|â€|ðŸ|Þ/);
   assert.match(layout, /Language Learning Hub/);
 });
