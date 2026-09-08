@@ -32,7 +32,7 @@ const apps = [
     language: "English",
     eyebrow: "Read · Practise · Print",
     description: "Choose from seven English levels, practise on screen, or print child-friendly worksheets for later.",
-    href: "https://atollingo-worksheets.mohamedmisbaah.chatgpt.site/",
+    href: "https://worksheets.atollingo.com/",
     className: "worksheets",
   },
 ];
