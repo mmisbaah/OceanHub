@@ -17,4 +17,4 @@
 .quick-icon.worksheets{background:linear-gradient(150deg,#fff8cf,#ffd978)}
 .worksheets .app-art{background:linear-gradient(155deg,#fff9d9,#ffe291)}
 @media(min-width:901px){.app-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.quick-launch{gap:8px}.quick-app{min-width:76px}.quick-icon{width:60px;height:60px;font-size:32px}.quick-app strong{font-size:12px}.enter{min-width:70px}}
+@media(max-width:760px){.quick-launch{display:grid;grid-template-columns:repeat(2,minmax(0,132px));justify-content:center;gap:18px 20px;max-width:310px}.quick-app{min-width:0;width:100%;padding:7px}.quick-icon{width:64px;height:64px;font-size:34px}.quick-app strong{font-size:13px;line-height:1.2}.enter{min-width:86px;min-height:44px}.hero{min-height:930px}}
