@@ -16,10 +16,6 @@ const localBindingConfig = {
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
   workers_dev: true,
-  routes: [
-    { pattern: "atollingo.com", custom_domain: true as const },
-    { pattern: "www.atollingo.com", custom_domain: true as const },
-  ],
   observability: { enabled: true },
   d1_databases: d1
     ? [
