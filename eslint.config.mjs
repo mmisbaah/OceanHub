@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  { files: ["**/*.{js,jsx,ts,tsx}"] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   react.configs.flat.recommended,
@@ -35,6 +36,12 @@ const eslintConfig = defineConfig([
         version: "detect",
       },
     },
+  },
+  {
+    files: ["src/**/*.jsx", "app/**/*.jsx"],
+    // Browser-storage hydration happens in effects. Full document navigation
+    // deliberately reloads the active learner at app boundaries.
+    rules: { "react/prop-types": "off", "react-hooks/set-state-in-effect": "off", "@next/next/no-html-link-for-pages": "off" },
   },
 ]);
 

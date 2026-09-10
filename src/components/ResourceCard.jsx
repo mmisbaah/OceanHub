@@ -1,0 +1,5 @@
+'use client';
+import ReportProblemButton from './ReportProblemModal';
+import {downloadText} from '../utils/unifiedProgressTracker';
+import {workbookHtml} from '../utils/workbookGenerator';
+export default function ResourceCard({resource:r}){return <article className="panel resource-card"><div className="row"><span className="tag">{r.subject}</span><small>{r.activityType} · {r.estimatedMinutes} min</small></div><h2>{r.title}</h2><p>{r.collection?"Choose a grade or skill level inside the app":`Grade ${r.gradeLevel} · Level ${r.frameworkLevel}`}</p><p className="muted">{r.strand} · {r.curriculumOutcomeCode}</p><div className="row"><span>{r.isPrintable?'🖨 Printable':''}</span><span>{r.offlineAvailable?'↓ Offline pack':''}</span></div>{r.collection&&<p className="muted">Choose your grade inside the app.</p>}<div className="row"><a className="primary" href={r.href}>{r.collection?'Open collection':'Start activity'} →</a>{r.offlineAvailable&&<button onClick={()=>downloadText(`${r.skillId}-workbook.html`,workbookHtml([r.skillId]),'text/html')}>Download</button>}</div><ReportProblemButton resourceId={r.id} title={r.title}/></article>}

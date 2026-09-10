@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Atollingo | Language Learning Hub",
-  description: "Atollingo is the home of OceanLearn, OceanPlay, OceanArabic and future language-learning adventures for Maldivian children.",
+  title: "Atollingo | My Learning Hub",
+  description: "A connected learning hub for Maldivian children: lessons, games, worksheets and family learning support.",
   icons: { icon: "/favicon.svg" },
 };
 

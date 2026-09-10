@@ -1,43 +1,11 @@
-import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import test from "node:test";
-
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", String(process.pid) + "-" + String(Date.now()));
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
-}
-
-test("server-renders the Atollingo language hub", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-  const html = await response.text();
-  assert.match(html, /<title>Atollingo \| Language Learning Hub<\/title>/i);
-  assert.match(html, /Every language\./);
-  assert.match(html, /OceanLearn/);
-  assert.match(html, /OceanPlay/);
-  assert.match(html, /OceanArabic/);
-  assert.match(html, /العربية/);
-  assert.match(html, /އައިސް އެކުގައި ދަސްކޮށްލަމާ!/);
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import test from 'node:test';
+import {pathToFileURL} from 'node:url';
+const workerUrl=new URL('../dist/server/index.js',import.meta.url);
+const {default:worker}=await import(workerUrl.href);
+for(const path of ['/','/learn','/library','/parent','/teacher','/diagnostic','/join','/about-our-content','/bridge'])test(`renders ${path} from the production Worker`,async()=>{
+ const response=await worker.fetch(new Request(`http://localhost${path}`,{headers:{accept:'text/html'}}),{ASSETS:{fetch:async()=>new Response('Not found',{status:404})}},{waitUntil(){},passThroughOnException(){}});
+ assert.equal(response.status,200);assert.match(response.headers.get('content-type')||'',/text\/html/);const html=await response.text();assert.doesNotMatch(html,/Internal Server Error|ReferenceError|is not defined/);if(path==='/')assert.match(html,/My learning/);if(path==='/teacher')assert.match(html,/Teacher|teacher|TEACHER/);if(path==='/about-our-content')assert.match(html,/educator review pending/);
 });
-
-test("links every live language app and keeps source UTF-8 clean", async () => {
-  const [page, layout] = await Promise.all([
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-  ]);
-  for (const url of [
-    "https://english.atollingo.com/",
-    "https://play.atollingo.com/",
-    "https://arabic.atollingo.com/",
-  ]) assert.ok(page.includes(url), `missing app link: ${url}`);
-  assert.doesNotMatch(page, /chatgpt\.site/i);
-  assert.doesNotMatch(page + layout, /Ã|Â|â€|ðŸ|Þ/);
-  assert.match(layout, /Language Learning Hub/);
-});
+test('catalog indexes existing resources with unique IDs and valid links',async()=>{const rows=JSON.parse(await readFile(new URL('../src/data/worksheetCatalog.json',import.meta.url),'utf8'));assert.equal(rows.length,4200);assert.equal(new Set(rows.map(r=>r.id)).size,rows.length);for(const row of rows){const url=new URL(row.href);assert.equal(url.hostname,'worksheets.atollingo.com');assert.ok(url.searchParams.has('item'));assert.ok(row.frameworkLevel>=1&&row.frameworkLevel<=7)}});
