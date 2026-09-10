@@ -1,0 +1,2 @@
+'use client';
+export default function AvatarPicker(){return <fieldset className="learner-avatar-picker"><legend>Choose your avatar</legend><div>{Array.from({length:18},(_,i)=>{const id='avatar-'+String(i+1).padStart(2,'0');return <label key={id}><input type="radio" name="avatar" value={id} defaultChecked={i===0}/><img src={'/assets/avatars/'+id+'.png'} alt={'Student avatar '+(i+1)}/></label>})}</div></fieldset>}
