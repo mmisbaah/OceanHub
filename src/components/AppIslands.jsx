@@ -9,6 +9,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Robot Rescue': ['games'], Colorworld: ['games'], 'Math Market': ['games'], 'Word Quest': ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
   OceanLearn: ['learn'], OceanPlay: ['games'], 'Atollingo Worksheets': ['worksheets'], OceanArabic: ['learn','games'],
 };
@@ -38,7 +39,7 @@ export default function AppIslands() {
         <div className="island-apps">
           {group.apps.map(([name,description,href,icon]) => <a className="island-app" href={href} key={name}>
             <div className="island-app-picture">
-              <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/>
+              {illustrations[name] ? <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/> : <strong className="game-card-icon" aria-hidden="true">{icon}</strong>}
               <span aria-hidden="true">{icon}</span>
             </div>
             <div className="island-app-copy"><h3>{name}</h3><p>{description}</p><small className="app-domain">{new URL(href).hostname}</small><span className="island-open">{type==='games'?'Play now':type==='worksheets'?'Open worksheets':'Open app'} <span aria-hidden="true">→</span></span></div>

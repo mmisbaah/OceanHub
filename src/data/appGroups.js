@@ -20,6 +20,12 @@ export const appGroups = [
         "MathLagoon printable practice",
         "https://worksheets.mathlagoon.com/",
         "📝"
+      ],
+      [
+        "Math Market",
+        "A maths market adventure",
+        "https://mathmarket.atollingo.com/",
+        "🛒"
       ]
     ]
   },
@@ -44,6 +50,12 @@ export const appGroups = [
         "Read, practise & print",
         "https://worksheets.atollingo.com/",
         "✏️"
+      ],
+      [
+        "Word Quest",
+        "A word-game adventure",
+        "https://wordquest.atollingo.com/",
+        "🔤"
       ]
     ]
   },
@@ -56,6 +68,24 @@ export const appGroups = [
         "Arabic · العربية",
         "https://arabic.atollingo.com/",
         "ب"
+      ]
+    ]
+  },
+  {
+    "id": "creative",
+    "title": "Coding & creativity",
+    "apps": [
+      [
+        "Robot Rescue",
+        "A robot coding adventure",
+        "https://robot.atollingo.com/",
+        "🤖"
+      ],
+      [
+        "Colorworld",
+        "Explore a world of colour",
+        "https://colorworld.atollingo.com/",
+        "🎨"
       ]
     ]
   }
