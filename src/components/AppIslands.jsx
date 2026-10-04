@@ -6,6 +6,8 @@ import './app-islands.css';
 const illustrations = {
   MathLagoon: 'mathlagoon', 'Math Explorer': 'explorer', 'Maths Worksheets': 'mathsheets',
   OceanLearn: 'english', OceanPlay: 'play', 'Atollingo Worksheets': 'worksheets', OceanArabic: 'arabic',
+  'Math Market': 'mathmarket', RoboCalc: 'robocalc', 'Word Quest': 'wordquest',
+  'Robot Rescue': 'robot', 'Code Quest': 'codequest', Colorwood: 'colorwood',
 };
 
 const appTypes = {
@@ -38,10 +40,9 @@ export default function AppIslands() {
       {groups.map(group => <section className={`subject-island island-${group.id}`} key={group.id} aria-labelledby={`apps-${group.id}`}>
         <h2 id={`apps-${group.id}`}>{group.title}</h2>
         <div className="island-apps">
-          {group.apps.map(([name,description,href,icon]) => <a className="island-app" href={href} key={name}>
+          {group.apps.map(([name,description,href]) => <a className="island-app" href={href} key={name}>
             <div className="island-app-picture">
-              {illustrations[name] ? <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/> : <strong className="game-card-icon" aria-hidden="true">{icon}</strong>}
-              <span aria-hidden="true">{icon}</span>
+              <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/>
             </div>
             <div className="island-app-copy"><h3>{name}</h3><p>{description}</p><small className="app-domain">{new URL(href).hostname}</small><span className="island-open">{type==='games'?'Play now':type==='worksheets'?'Open worksheets':'Open app'} <span aria-hidden="true">→</span></span></div>
           </a>)}
