@@ -9,7 +9,8 @@ const illustrations = {
 };
 
 const appTypes = {
-  'Robot Rescue': ['games'], Colorworld: ['games'], 'Math Market': ['games'], 'Word Quest': ['games'],
+  'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
+  'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
   OceanLearn: ['learn'], OceanPlay: ['games'], 'Atollingo Worksheets': ['worksheets'], OceanArabic: ['learn','games'],
 };
