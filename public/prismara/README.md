@@ -10,6 +10,8 @@ Explore four islands with three missions each. Finish repeating sequences, combi
 
 Use the animated signal simulator or manually scrub its timeline. The pocket field guide explains each mechanic. Shape labels complement colors; all answers work by click, touch, or keyboard. Menu settings include read-aloud, reduced motion, and high contrast. The OS reduced-motion preference is also respected.
 
+Every screen fits the viewport without page or panel scrolling. Compact layouts adapt the hub and signal timelines; the complete puzzle or dialog scales down when needed so its controls remain visible. This also responds to viewport resizing and the mobile visual viewport.
+
 Progress, lighthouse channels, achievements, and preferences save in this browser. Reset removes only Prismara’s own keys. This standalone prototype does not sync with Atollingo student accounts.
 
 ## Files
@@ -20,9 +22,11 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 - `js/lagoon.js`: coastal hub, timeline visualization, accessibility and persistence improvements
 - `js/audio.js`: synthesized sounds and optional speech
 - `css/`: base animation styles, coastal theme, local icon styles
+- `js/viewport.js` and `css/viewport.css`: responsive, scroll-free screen fitting
 - `assets/lagoon.svg`: original island map
 - `webfonts/`: Font Awesome solid font
 - `tests/verify.cjs`: browser flow verification; requires Playwright and an installed Chromium browser
+- `tests/viewport.cjs`: all-screen viewport checks, including portrait and landscape phones
 
 Third-party runtime: Tailwind CSS 3.4.17 (MIT). Icons: Font Awesome Free 6.4.0 (font SIL OFL 1.1, code MIT). See https://tailwindcss.com and https://fontawesome.com/license/free.
 
