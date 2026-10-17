@@ -6,7 +6,13 @@ Run `npm start` in this folder, then visit http://127.0.0.1:4187. You can also o
 
 ## Play
 
-Explore four islands with three missions each. Finish repeating sequences, combine shape and outline cycles, and find the least common multiple of lantern pulses. Collect 12 shards to unlock four lighthouse challenges. Each normal mission awards up to three stars based on hints used. Missions unlock sequentially within each island; completed missions can be replayed. Age selection is an explorer preference, not a different puzzle set.
+Explore four islands with 12 levels each. Every level contains five freshly generated puzzles, for 240 island questions. Solve shape sequences, combine shape and outline cycles, and find when lantern pulses meet. Collect 48 light shards to unlock four lighthouse channels with five puzzles each: 260 questions in a full campaign.
+
+Each level awards one shard only after all five answers are correct. Its one-to-three-star rating reflects the most help used on a question in that run. Levels unlock sequentially, in three difficulty bands. Replaying a completed level generates new problems and preserves the best star score. Existing completed level IDs and achievements are retained. Age selection is an explorer preference, not a different puzzle set.
+
+Tap **Surprise puzzle** on an island's level selector for unlimited random practice at an unlocked difficulty. Correct answers lead to another problem; practice does not award duplicate shards or campaign stars. Level selection is paged, keeping text large and screens free of scrolling.
+
+Generated questions use seeded random generators with bounded shape cycles and signal periods. The first shared signal beat is always within the displayed timeline. Questions, answers, and hints derive from the same data, and consecutive questions for the same level do not repeat. Completed levels save; leaving an unfinished level starts a fresh five-question run when you return.
 
 Use the animated signal simulator or manually scrub its timeline. The pocket field guide explains each mechanic. Shape labels complement colors; all answers work by click, touch, or keyboard. Menu settings include read-aloud, reduced motion, and high contrast. The OS reduced-motion preference is also respected.
 
@@ -17,7 +23,9 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 ## Files
 
 - `index.html`: shell and accessible helper controls
-- `js/missions.js`: 16 stage definitions and achievement data
+- `js/missions.js`: base mission templates, lighthouse channels, and achievement data
+- `js/generator.js`: 48 level definitions, seeded puzzle generation, answer and hint derivation
+- `js/adventure.js`: five-question sessions, rewards, level paging, and unlimited practice
 - `js/game.js`: puzzle validation, progression, feedback, dashboard
 - `js/lagoon.js`: coastal hub, timeline visualization, accessibility and persistence improvements
 - `js/kids.js` and `css/kids.css`: large-type child-facing screens, simplified copy, island paging, visual puzzle choices
@@ -27,6 +35,8 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 - `assets/lagoon.svg`: original island map
 - `webfonts/`: Font Awesome solid font
 - `tests/verify.cjs`: browser flow verification; requires Playwright and an installed Chromium browser
+- `tests/generator.cjs`: 4,800 generated problem checks for variety, valid answers, and bounded visual complexity
+- `tests/campaign.cjs`: full 260-question campaign, legacy progress migration, rewards, reload persistence, and unlimited practice
 - `tests/viewport.cjs`: all-screen viewport checks, including portrait and landscape phones
 
 Third-party runtime: Tailwind CSS 3.4.17 (MIT). Icons: Font Awesome Free 6.4.0 (font SIL OFL 1.1, code MIT). See https://tailwindcss.com and https://fontawesome.com/license/free.

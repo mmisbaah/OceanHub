@@ -52,7 +52,7 @@ class PrismaraGame {
 
     updateHUD() {
         const stars = this.totalStars();
-        document.getElementById('global-stars').innerText = `${stars} / 36`;
+        document.getElementById('global-stars').innerText = `${stars} / ${CAMPAIGN_LEVELS * 3}`;
         document.getElementById('global-streak').innerText = this.state.streak;
     }
 
@@ -781,7 +781,7 @@ class PrismaraGame {
         this.showModal(
             '✨ PRISMARA IS RESTORED ✨',
             `<p class="mb-3">The Great Lighthouse blazes once more, and the Lantern-Keeper bows with gratitude.</p>
-             <p class="text-xs text-amber-300 font-bold mb-1">Total Stars: ${this.totalStars()} / 36</p>
+             <p class="text-xs text-amber-300 font-bold mb-1">Total Stars: ${this.totalStars()} / ${CAMPAIGN_LEVELS * 3}</p>
              <p class="text-xs text-indigo-300">You mastered repeating patterns, dual-attribute cycles, and least common multiples!</p>`,
             true,
             () => this.goHome()
@@ -829,7 +829,7 @@ class PrismaraGame {
                     <h4 class="font-bold text-indigo-200 mb-2">Progress Overview</h4>
                     <div class="space-y-1 text-indigo-300">${zoneProgress}</div>
                     <div class="flex justify-between mt-2 pt-2 border-t border-indigo-900">
-                        <span>Total Stars:</span><span class="text-amber-300 font-bold">${this.totalStars()} / 36</span>
+                        <span>Total Stars:</span><span class="text-amber-300 font-bold">${this.totalStars()} / ${CAMPAIGN_LEVELS * 3}</span>
                     </div>
                 </div>
                 <div class="bg-[#100D25] p-3 rounded-xl border border-indigo-900">
@@ -898,7 +898,7 @@ class PrismaraGame {
         if (this._modalOnContinue) {
             const fn = this._modalOnContinue;
             this._modalOnContinue = null;
-            setTimeout(fn, 50);
+            fn();
         }
     }
 }
@@ -907,5 +907,7 @@ class PrismaraGame {
 const style = document.createElement('style');
 style.textContent = '@keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }';
 document.head.appendChild(style);
+
+
 
 
