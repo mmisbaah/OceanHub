@@ -28,8 +28,9 @@ const PrismaraGenerator=(()=>{
    mission.rule='Shape and outline cycles';
    mission.hint='Shapes: '+mission.shapeCycle.map(shapeName).join(', ')+'. Outlines: '+mission.strokeCycle.join(', ')+'. Each group repeats on its own.';
   }else if(spec.type==='signal'){
-   const pairs=d===1?[[2,3],[2,4],[3,4],[2,5],[3,6]]:[[2,5],[3,4],[3,5],[4,6],[4,5],[3,6],[2,7],[3,7]];
-   const triples=[[2,3,4],[2,3,6],[2,4,6],[3,4,6],[2,4,8],[2,5,10],[2,6,9],[2,4,5]];
+   const pairs=[],triples=[];const limit=d===1?8:12;
+   for(let a=2;a<=limit;a++)for(let b=a+1;b<=limit;b++)if(lcm([a,b])<=24)pairs.push([a,b]);
+   for(let a=2;a<=12;a++)for(let b=a+1;b<=12;b++)for(let c=b+1;c<=12;c++)if(lcm([a,b,c])<=24)triples.push([a,b,c]);
    const periods=shuffle(rng,pick(rng,d===3?triples:pairs));
    const colors=['#FDCB6E','#00CEC9','#FF7675'];
    mission.signals=periods.map((period,i)=>({name:String.fromCharCode(65+i),period,color:colors[i]}));
@@ -42,7 +43,7 @@ const PrismaraGenerator=(()=>{
  function answer(m){if(m.type==='sequence')return m.basePattern[m.preFilled%m.basePattern.length];if(m.type==='bridge')return{shape:m.shapeCycle[m.targetIndex%m.shapeCycle.length],stroke:m.strokeCycle[m.targetIndex%m.strokeCycle.length]};return lcm(m.signals.map(s=>s.period));}
  function fingerprint(m){return JSON.stringify([m.type,m.basePattern,m.preFilled,m.shapeCycle,m.strokeCycle,m.targetIndex,m.signals?.map(s=>s.period)]);}
  function freshSeed(){if(globalThis.crypto?.getRandomValues){const n=new Uint32Array(2);crypto.getRandomValues(n);return n.join('-');}return Date.now()+'-'+Math.random();}
- function next(spec,seed,round,previous){for(let n=0;n<100;n++){const m=generate(spec,seed+':'+round+':'+n);if(fingerprint(m)!==previous)return m;}throw Error('Could not generate a different puzzle');}
+ function next(spec,seed,round,previous,history=[]){const blocked=new Set([...history,previous]);for(let n=0;n<1000;n++){const m=generate(spec,seed+':'+round+':'+n);if(!blocked.has(fingerprint(m)))return m;}if(history.length)return next(spec,seed,round,previous,history.slice(Math.max(1,Math.ceil(history.length/4))));throw Error('Could not generate a different puzzle');}
  return{ROUNDS,LEVELS,generate,answer,fingerprint,next,freshSeed,lcm,random};
 })();
 for(const [zoneKey,zone]of Object.entries(MISSIONS)){

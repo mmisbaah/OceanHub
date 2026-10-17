@@ -859,7 +859,7 @@ class PrismaraGame {
                 <button onclick="game.openDashboard();" class="w-full p-3 bg-[#100D25] border border-indigo-800 rounded-xl text-xs font-bold text-indigo-200 hover:text-white text-left">
                     <i class="fa-solid fa-chart-pie mr-2"></i>Parent Dashboard
                 </button>
-                <button onclick="if(confirm('Reset all progress? This cannot be undone.')) { ['prismara_progress_v2','prismara_achievements_v2','prismara_beacon','prismara_preferences'].forEach(k => localStorage.removeItem(k)); location.reload(); }" class="w-full p-3 bg-[#100D25] border border-rose-800/60 rounded-xl text-xs font-bold text-rose-300 hover:text-white text-left">
+                <button onclick="if(confirm('Reset all progress? This cannot be undone.')) { ['prismara_progress_v2','prismara_achievements_v2','prismara_beacon','prismara_preferences','prismara_recent_puzzles_v1'].forEach(k => localStorage.removeItem(k)); location.reload(); }" class="w-full p-3 bg-[#100D25] border border-rose-800/60 rounded-xl text-xs font-bold text-rose-300 hover:text-white text-left">
                     <i class="fa-solid fa-trash mr-2"></i>Reset All Progress
                 </button>
                 <button onclick="game.goHome(); game.closeModal();" class="w-full p-3 bg-indigo-600 rounded-xl text-xs font-bold text-white">
@@ -907,6 +907,7 @@ class PrismaraGame {
 const style = document.createElement('style');
 style.textContent = '@keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }';
 document.head.appendChild(style);
+
 
 
 

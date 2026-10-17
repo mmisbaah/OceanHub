@@ -2,8 +2,10 @@
 PrismaraGame.prototype.updateHUD=function(){document.getElementById('global-stars').textContent=this.totalStars()+' / '+CAMPAIGN_LEVELS*3;document.getElementById('global-streak').textContent=this.state.streak;};
 PrismaraGame.prototype.beginPuzzleRound=function(run){
  this.lastGenerated=this.lastGenerated||{};const key=run.zone+':'+run.spec.id;
- const mission=PrismaraGenerator.next(run.spec,run.seed,run.round,run.previous||this.lastGenerated[key]);
+ if(!this.puzzleHistory){try{const saved=JSON.parse(localStorage.getItem('prismara_recent_puzzles_v1'));this.puzzleHistory=Array.isArray(saved)?saved.filter(x=>typeof x==='string'&&x.length<800).slice(-512):[];}catch{this.puzzleHistory=[];}}
+ const mission=PrismaraGenerator.next(run.spec,run.seed,run.round,run.previous||this.lastGenerated[key],this.puzzleHistory);
  run.previous=PrismaraGenerator.fingerprint(mission);this.lastGenerated[key]=run.previous;mission.title=run.practice?'Surprise puzzle':`Puzzle ${run.round+1} of ${PrismaraGenerator.ROUNDS}`;
+ this.puzzleHistory.push(run.previous);this.puzzleHistory=this.puzzleHistory.slice(-512);try{localStorage.setItem('prismara_recent_puzzles_v1',JSON.stringify(this.puzzleHistory));}catch{}
  this.currentMission={zone:run.zone,missionId:run.spec.id,mission,hintsUsed:0,placed:null,inLighthouse:!!run.lighthouse,lighthouseChannel:run.channel,run};
  document.getElementById('hint-btn').classList.remove('hidden');this.renderPuzzle();
 };

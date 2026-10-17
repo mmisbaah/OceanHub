@@ -16,7 +16,13 @@ Generated questions use seeded random generators with bounded shape cycles and s
 
 Use the animated signal simulator or manually scrub its timeline. The pocket field guide explains each mechanic. Shape labels complement colors; all answers work by click, touch, or keyboard. Menu settings include read-aloud, reduced motion, and high contrast. The OS reduced-motion preference is also respected.
 
-Every screen fits the viewport without page or panel scrolling. Child-facing screens use readable sans-serif text, large buttons, and short instructions. The island picker shows one island at a time. Longer explanations and grown-up information use Previous/Next pages. Text and controls are never scaled down to fit.
+Every screen fits the viewport without page or panel scrolling. Child-facing screens use readable sans-serif text, large buttons, and short instructions. The archipelago map connects the islands, and district arrows reveal their level locations. Longer explanations and grown-up information use Previous/Next pages. Text and controls are never scaled down to fit.
+
+## Explore the maps
+
+Tap one of the four islands on the archipelago map to sail there, or visit the central lighthouse. Each island has its own coastline, palette, landmarks, and three district maps. The districts contain 48 individually named level destinations in total. Select an unlocked place to see its landmark and start its five puzzles. Completing a level returns you to the island map; paths show completed and locked destinations. Arrow buttons move between districts without scrolling. Keyboard and reduced-motion travel are supported.
+
+Recent puzzle fingerprints are saved in this browser to avoid repeated problems across visits. The signal generator now draws from a larger pool of valid rhythms. As with any bounded puzzle bank, old practice questions can be recycled after available combinations have been used; immediate repeats are excluded.
 
 Progress, lighthouse channels, achievements, and preferences save in this browser. Reset removes only Prismara’s own keys. This standalone prototype does not sync with Atollingo student accounts.
 
@@ -26,6 +32,8 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 - `js/missions.js`: base mission templates, lighthouse channels, and achievement data
 - `js/generator.js`: 48 level definitions, seeded puzzle generation, answer and hint derivation
 - `js/adventure.js`: five-question sessions, rewards, level paging, and unlimited practice
+- `js/maps.js` and `css/maps.css`: archipelago travel, island districts, named level landmarks, locks, and biome palettes
+- `assets/maps/`: 12 original district SVGs with different coasts and scenery
 - `js/game.js`: puzzle validation, progression, feedback, dashboard
 - `js/lagoon.js`: coastal hub, timeline visualization, accessibility and persistence improvements
 - `js/kids.js` and `css/kids.css`: large-type child-facing screens, simplified copy, island paging, visual puzzle choices
@@ -37,6 +45,7 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 - `tests/verify.cjs`: browser flow verification; requires Playwright and an installed Chromium browser
 - `tests/generator.cjs`: 4,800 generated problem checks for variety, valid answers, and bounded visual complexity
 - `tests/campaign.cjs`: full 260-question campaign, legacy progress migration, rewards, reload persistence, and unlimited practice
+- `tests/maps.cjs`: unique map artwork/locations, travel, district locks, keyboard entry, and target geometry
 - `tests/viewport.cjs`: all-screen viewport checks, including portrait and landscape phones
 
 Third-party runtime: Tailwind CSS 3.4.17 (MIT). Icons: Font Awesome Free 6.4.0 (font SIL OFL 1.1, code MIT). See https://tailwindcss.com and https://fontawesome.com/license/free.

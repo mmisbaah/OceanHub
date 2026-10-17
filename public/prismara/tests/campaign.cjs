@@ -4,18 +4,18 @@ const assert=require('node:assert/strict');
  const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});
  const page=await browser.newPage({viewport:{width:390,height:844}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:4187');await page.waitForSelector('.kid-screen');
- await page.getByRole('button',{name:'Play',exact:true}).click();await page.getByRole('button',{name:/Level 1 5 new puzzles/}).click();
+ await page.getByRole('button',{name:'Sail to Shell Beach',exact:true}).click();await page.getByRole('button',{name:'Level 1: Pearl Landing',exact:true}).click();await page.getByRole('button',{name:'Start puzzles',exact:true}).click();
  assert.equal(await page.evaluate(()=>game.currentMission.run.round),0);
  // Seed migration with old completed IDs; expanded loading must retain them.
  await page.evaluate(()=>localStorage.setItem('prismara_progress_v2',JSON.stringify({pathways:{p1:2,p2:3},gardens:{g1:1},bridge:{},signal:{}})));
  await page.reload();await page.waitForSelector('.kid-screen');assert.equal(await page.evaluate(()=>game.state.progress.pathways.p2),3);assert.equal(await page.evaluate(()=>game.state.progress.gardens.g1),1);
  await page.evaluate(()=>{for(const key of Object.keys(MISSIONS))game.state.progress[key]={};game.saveProgress();game.goHome();localStorage.setItem('unrelated-app','keep');});
- async function solveRound(){await page.evaluate(()=>{
+ const seen=new Set(); async function solveRound(){const sig=await page.evaluate(()=>({key:PrismaraGenerator.fingerprint(game.currentMission.mission),practice:game.currentMission.run.practice}));if(!sig.practice){assert.ok(!seen.has(sig.key),'Campaign puzzle repeated');seen.add(sig.key);}await page.evaluate(()=>{
   const m=game.currentMission.mission,a=PrismaraGenerator.answer(m);
   if(m.type==='sequence'){game.pickSequence(a);game.verifySequence();}
   else if(m.type==='bridge'){game.pickBridgeShape(a.shape);game.pickBridgeStroke(a.stroke);game.verifyBridge();}
   else{document.getElementById('signal-input').value=a+'.5';game.verifySignal();if(game.currentMission.answered)throw Error('Fraction accepted');document.getElementById('signal-input').value=a;game.verifySignal();}
- });await page.getByRole('dialog').waitFor();await page.getByRole('button',{name:'CONTINUE',exact:true}).click();await page.waitForTimeout(60);}
+ });await page.getByRole('dialog').waitFor();await page.getByRole('button',{name:'CONTINUE',exact:true}).click();await page.waitForTimeout(15);}
  let count=0;
  for(const zone of ['pathways','gardens','bridge','signal']){
   const ids=await page.evaluate(z=>MISSIONS[z].missions.map(m=>m.id),zone);assert.equal(ids.length,12);
@@ -28,7 +28,7 @@ const assert=require('node:assert/strict');
    assert.equal(await page.evaluate(({zone,id})=>game.state.progress[zone][id],{zone,id}),3);
   }
  }
- assert.equal(await page.evaluate(()=>game.totalStars()),144);assert.match(await page.locator('#global-stars').innerText(),/144 \/ 144/);
+ assert.equal(await page.evaluate(()=>game.totalStars()),144);console.log('PASS all 240 island questions with distinct problems');assert.match(await page.locator('#global-stars').innerText(),/144 \/ 144/);
  for(let channel=0;channel<4;channel++){
   await page.evaluate(i=>game.startLighthouseChannel(i),channel);
   for(let round=0;round<5;round++){assert.equal(await page.evaluate(i=>game.lighthouseDone[i],channel),false);await solveRound();count++;}
@@ -41,3 +41,4 @@ const assert=require('node:assert/strict');
  await page.evaluate(()=>game.openSettings());await page.getByRole('button',{name:'Reduced motion: off'}).click();assert.equal(await page.evaluate(()=>document.body.classList.contains('motion-paused')),true);
  assert.deepEqual(errors,[]);await browser.close();console.log('PASS '+count+' campaign puzzles, 48 level rewards, 4 five-puzzle lighthouse channels, migration, saved progress, unlimited practice, fractional rejection, and animation.');
 })().catch(e=>{console.error(e);process.exit(1)});
+
