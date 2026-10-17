@@ -35,7 +35,8 @@ PrismaraGame.prototype.savePreferences=function(){try{localStorage.setItem('pris
 const ageSetter=PrismaraGame.prototype.setAgeBand;
 PrismaraGame.prototype.setAgeBand=function(b){ageSetter.call(this,b);this.savePreferences();};
 const ttsSetter=PrismaraGame.prototype.toggleTTS;
-PrismaraGame.prototype.toggleTTS=function(){ttsSetter.call(this);this.savePreferences();};
+PrismaraGame.prototype.toggleTTS=function(){ttsSetter.call(this);document.getElementById('tts-btn').setAttribute('aria-pressed',String(this.state.accessibility.tts));this.savePreferences();};
+PrismaraGame.prototype.readHelper=function(){const enabled=audioSystem.ttsEnabled;audioSystem.ttsEnabled=true;audioSystem.speak(document.getElementById('helper-text').textContent);audioSystem.ttsEnabled=enabled;};
 const game=new PrismaraGame();
 try{const p=JSON.parse(localStorage.getItem('prismara_preferences'));if(p){if(['5-7','8-10','11-12'].includes(p.age))game.state.ageBand=p.age;game.state.accessibility.tts=p.tts===true;document.body.classList.toggle('motion-paused',p.motion===true);document.body.classList.toggle('high-contrast',p.contrast===true);}}catch{}
 audioSystem.ttsEnabled=game.state.accessibility.tts;
@@ -46,3 +47,5 @@ const improveAccessibility=()=>{document.querySelectorAll('i.fa-solid').forEach(
 new MutationObserver(improveAccessibility).observe(document.getElementById('app-container'),{childList:true,subtree:true});
 new MutationObserver(improveAccessibility).observe(document.getElementById('modal-content'),{childList:true,subtree:true});
 improveAccessibility();
+document.querySelector('footer button').onclick=()=>game.readHelper();
+document.getElementById('tts-btn').setAttribute('aria-pressed',String(game.state.accessibility.tts));
