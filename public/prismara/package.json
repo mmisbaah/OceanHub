@@ -1,0 +1,1 @@
+{"name":"prismara-lagoon","version":"1.0.0","private":true,"scripts":{"start":"node serve.cjs","test":"node tests/verify.cjs"}}
