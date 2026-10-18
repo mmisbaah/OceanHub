@@ -2,6 +2,8 @@
 
 A standalone, multi-file educational game inspired by Atollingo’s ink, teal, mint, coral, and sand palette. Original island illustration; no Atollingo artwork is copied.
 
+Live game: https://prismara.atollingo.com/
+
 Run `npm start` in this folder, then visit http://127.0.0.1:4187. You can also open `index.html` directly. No build or installation is needed. The game bundles its Tailwind runtime and Font Awesome solid icons; gameplay makes no external requests.
 
 ## Play
@@ -53,3 +55,7 @@ Progress, lighthouse channels, achievements, and preferences save in this browse
 Third-party runtime: Tailwind CSS 3.4.17 (MIT). Icons: Font Awesome Free 6.4.0 (font SIL OFL 1.1, code MIT). See https://tailwindcss.com and https://fontawesome.com/license/free.
 
 GitHub placement: `public/prismara/` in OceanHub; served at `/prismara/index.html` by the existing static asset pipeline. No Cloudflare configuration or account integration changes are required.
+
+## Cloudflare subdomain deployment
+
+`wrangler.jsonc` deploys the standalone static game as the `atollingo-prismara` Worker on the custom domain `prismara.atollingo.com`. `node build.cjs` packages only the public game files into `dist/`. With Wrangler installed and authenticated, run `npm run deploy` from this folder to build and publish. The main Atollingo application has its own deployment; the subdomain does not require merging the OceanHub pull request.
