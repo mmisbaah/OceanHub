@@ -29,7 +29,9 @@ PrismaraGame.prototype.renderHub=function(){
  this.setPrompt('Tap an island to sail there.');
  const positions=[[23,18,10,38],[77,18,30,62],[23,82,70,62],[77,82,90,38],[50,50,50,38]];
  document.getElementById('app-container').innerHTML=`<section class="kid-screen map-screen world-screen"><div class="kid-heading"><h2>Island map</h2><button class="kid-back" onclick="game.openCodex()" aria-label="How to play">? Help</button></div><div class="world-map" aria-label="Map of Prismara's five islands">${mapRoutes(true)}<div class="map-compass" aria-hidden="true">✦</div>${KID_ISLANDS.map((island,i)=>{const [x,y,lx,ly]=positions[i];const done=i===4?this.lighthouseDone.filter(Boolean).length:Object.keys(this.state.progress[island.key]).length;return `<button class="world-island" style="--x:${x}%;--y:${y}%;--lx:${lx}%;--ly:${ly}%" onclick="game.sailTo('${island.key}')" aria-label="Sail to ${island.name}">${islandDrawing(island.key)}<strong>${island.name}</strong><span>${done}/${i===4?4:12} ${i===4?'lights':'levels'}</span></button>`;}).join('')}<span class="map-sea-label" aria-hidden="true">Prismara Lagoon</span></div></section>`;
+ const heading=document.querySelector('.world-screen>.kid-heading');heading.classList.add('home-map-heading');heading.innerHTML=`<div class="home-map-title"><h2>Island map</h2><button class="kid-back" onclick="game.openCodex()" aria-label="How to play">?</button></div><label class="home-age" for="home-age-group">Age group<select id="home-age-group" aria-label="Age group" onchange="game.selectHomeAge(this.value)">${['5-7','8-10','11-12'].map(age=>`<option value="${age}" ${this.state.ageBand===age?'selected':''}>${age.replace('-','–')}</option>`).join('')}</select></label>`;
 };
+PrismaraGame.prototype.selectHomeAge=function(age){if(!['5-7','8-10','11-12'].includes(age))return;this.setAgeBand(age);document.getElementById('home-age-group')?.focus({preventScroll:true});};
 PrismaraGame.prototype.sailTo=function(zone){
  clearTimeout(this.sailingTimer);audioSystem.playClick();
  const arrive=()=>{this.islandPage=KID_ISLANDS.findIndex(i=>i.key===zone);if(zone==='lighthouse')this.openLighthouse();else this.openZone(zone);};
@@ -56,4 +58,5 @@ PrismaraGame.prototype.visitLocation=function(zone,id){
 const mapSuccess=PrismaraGame.prototype.handleSuccess;
 PrismaraGame.prototype.handleSuccess=function(...args){if(this.currentMission?.answered)return;const run=this.currentMission?.run;const returnsToMap=run&&!run.practice&&!run.lighthouse&&run.round===PrismaraGenerator.ROUNDS-1;mapSuccess.apply(this,args);if(returnsToMap)this._modalOnContinue=()=>this.openZone(run.zone);};
 PrismaraGame.prototype.openCodex=function(){this.showModal('Your island adventure',`<p><b>1. Tap an island on the sea map.</b><br>Your boat will take you there.</p><p><b>2. Visit a place on its path.</b><br>Every island has 12 different places.</p><p><b>3. Solve five puzzles.</b><br>Then return to the map and unlock the next stop.</p><p><b>4. Explore all three districts.</b><br>Use the arrows to see more of the island.</p><p><b>5. Restore the lighthouse.</b><br>Collect ${CAMPAIGN_LEVELS} shards to open its doors.</p>`,false);};
+
 

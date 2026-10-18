@@ -22,6 +22,8 @@ Every screen fits the viewport without page or panel scrolling. Child-facing scr
 
 Tap one of the four islands on the archipelago map to sail there, or visit the central lighthouse. Each island has its own coastline, palette, landmarks, and three district maps. The districts contain 48 individually named level destinations in total. Select an unlocked place to see its landmark and start its five puzzles. Completing a level returns you to the island map; paths show completed and locked destinations. Arrow buttons move between districts without scrolling. Keyboard and reduced-motion travel are supported.
 
+The home map includes a large Age group selector for ages 5–7, 8–10, and 11–12. The explorer preference is saved and restored on your next visit; it is also available in the menu.
+
 Recent puzzle fingerprints are saved in this browser to avoid repeated problems across visits. The signal generator now draws from a larger pool of valid rhythms. As with any bounded puzzle bank, old practice questions can be recycled after available combinations have been used; immediate repeats are excluded.
 
 Progress, lighthouse channels, achievements, and preferences save in this browser. Reset removes only Prismara’s own keys. This standalone prototype does not sync with Atollingo student accounts.
