@@ -12,6 +12,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Science Lagoon': ['learn'],
   'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
   'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'], Bloomora: ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
@@ -41,9 +42,9 @@ export default function AppIslands() {
       {groups.map(group => <section className={`subject-island island-${group.id}`} key={group.id} aria-labelledby={`apps-${group.id}`}>
         <h2 id={`apps-${group.id}`}>{group.title}</h2>
         <div className="island-apps">
-          {group.apps.map(([name,description,href]) => <a className="island-app" href={href} key={name}>
+          {group.apps.map(([name,description,href,icon]) => <a className="island-app" href={href} key={name}>
             <div className="island-app-picture">
-              <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/>
+              {illustrations[name] ? <img src={`/assets/apps/${illustrations[name]}.png`} alt="" width="88" height="88" decoding="async"/> : <strong style={{fontSize:48}} aria-hidden="true">{icon}</strong>}
             </div>
             <div className="island-app-copy"><h3>{name}</h3><p>{description}</p><small className="app-domain">{new URL(href).hostname}</small><span className="island-open">{type==='games'?'Play now':type==='worksheets'?'Open worksheets':'Open app'} <span aria-hidden="true">→</span></span></div>
           </a>)}

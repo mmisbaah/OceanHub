@@ -12,6 +12,13 @@ export const appGroups = [
     ]
   },
   {
+    "id": "science",
+    "title": "Science",
+    "apps": [
+      ["Science Lagoon", "Science lessons & investigations · Grades 1–6", "https://science.atollingo.com/", "🧪"]
+    ]
+  },
+  {
     "id": "english",
     "title": "English",
     "apps": [
