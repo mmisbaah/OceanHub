@@ -10,6 +10,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Science Lagoon': ['learn'],
   'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
   'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'], Bloomora: ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
