@@ -8,11 +8,12 @@ const illustrations = {
   OceanLearn: 'english', OceanPlay: 'play', 'Atollingo Worksheets': 'worksheets', OceanArabic: 'arabic',
   'Math Market': 'mathmarket', RoboCalc: 'robocalc', 'Word Quest': 'wordquest',
   'Robot Rescue': 'robot', 'Code Quest': 'codequest', Colorwood: 'colorwood',
+  Bloomora: 'bloomora',
 };
 
 const appTypes = {
   'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
-  'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'],
+  'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'], Bloomora: ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
   OceanLearn: ['learn'], OceanPlay: ['games'], 'Atollingo Worksheets': ['worksheets'], OceanArabic: ['learn','games'],
 };
