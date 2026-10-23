@@ -7,7 +7,8 @@ export const appGroups = [
       ["Math Explorer", "Daily maths practice", "https://explorer.mathlagoon.com/", "🔎"],
       ["Maths Worksheets", "MathLagoon printable practice", "https://worksheets.mathlagoon.com/", "📝"],
       ["Math Market", "A maths market adventure", "https://mathmarket.atollingo.com/", "🛒"],
-      ["RoboCalc", "Maths practice with robots", "https://robocalc.atollingo.com/", "🔢"]
+      ["RoboCalc", "Maths practice with robots", "https://robocalc.atollingo.com/", "🔢"],
+      ["Bloomora", "Pattern puzzles · ages 5–12", "https://bloomora.atollingo.com/", "🌱"]
     ]
   },
   {
