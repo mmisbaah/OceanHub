@@ -14,6 +14,7 @@ const appTypes = {
   'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'], Bloomora: ['games'],
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
   OceanLearn: ['learn'], OceanPlay: ['games'], 'Atollingo Worksheets': ['worksheets'], OceanArabic: ['learn','games'],
+  'Raajje Explorers': ['learn','games'],
 };
 const filters = [['all','🏝️','All adventures'],['learn','📚','Learning apps'],['games','🎮','Web games'],['worksheets','✏️','Worksheets']];
 export default function AppIslands() {

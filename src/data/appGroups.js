@@ -29,6 +29,13 @@ export const appGroups = [
     ]
   },
   {
+    "id": "social",
+    "title": "Social Studies",
+    "apps": [
+      ["Raajje Explorers", "Our islands, culture & history · Grades 1–6", "https://social.atollingo.com/", "🧭"]
+    ]
+  },
+  {
     "id": "creative",
     "title": "Coding & creativity",
     "apps": [

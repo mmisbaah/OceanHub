@@ -12,7 +12,7 @@ body:has(.island-launcher) .hub-footer{background:#fff0cd}
 .island-greeter{position:absolute;width:140px;height:140px;object-fit:contain;right:12%;bottom:8px;filter:drop-shadow(0 8px 4px #00698233)}
 .island-subjects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;scroll-margin-top:16px}
 .subject-island{--accent:#087b83;--wash:#e0f8f3;min-width:0;background:var(--wash);border:2px solid white;border-radius:24px;padding:14px;box-shadow:0 4px 0 #14667916}
-.island-english{--accent:#1967a3;--wash:#e6f4ff}.island-arabic{--accent:#795098;--wash:#f2eafa}
+.island-english{--accent:#1967a3;--wash:#e6f4ff}.island-arabic{--accent:#795098;--wash:#f2eafa}.island-social{--accent:#3f7a2c;--wash:#eaf6e2}
 .subject-island>h2{color:var(--accent);font-size:1.2rem;margin:0 0 13px;display:flex;align-items:center;gap:9px}
 .subject-island>h2::before{content:'';height:12px;width:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #ffffffb3}
 .island-apps{display:grid;gap:12px}.island-app{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:center;gap:12px;padding:12px;border:2px solid #fff;border-radius:18px;background:#fff;box-shadow:0 4px 0 #184f6414;text-decoration:none;transition:transform .15s,box-shadow .15s}
