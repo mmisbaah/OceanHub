@@ -5,7 +5,7 @@ body:has(.island-launcher) .hub-footer{background:#fff0cd}
 .island-welcome{position:relative;isolation:isolate;overflow:hidden;min-height:225px;border:3px solid white;border-radius:28px;padding:24px 30px;margin-bottom:22px;background:#c9f4fc url('/assets/apps/beach.png') center 57%/cover;box-shadow:0 7px 0 #92d5dc44,0 12px 25px #145a7114}
 .island-welcome::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f2fcfff2,#effcffdd 37%,#e6fbff22 70%)}
 .island-welcome-copy{max-width:560px}.island-welcome .eyebrow{font-size:.72rem;margin-bottom:8px}
-.island-welcome h1{font:900 clamp(1.8rem,3.4vw,2.8rem)/1.06 'Trebuchet MS',Arial,sans-serif;color:#124b68;letter-spacing:-.04em;margin:0}
+.island-welcome h1{font:900 clamp(1.8rem,3.4vw,2.8rem)/1.06 'Baloo 2','Nunito',sans-serif;color:#124b68;letter-spacing:-.04em;margin:0}
 .island-welcome h1 em{font-style:normal;color:#087b83}
 .island-welcome-copy>p:not(.eyebrow){color:#234f62;margin:10px 0;font-weight:700;font-size:.95rem}
 .island-welcome-copy>a{display:inline-block;border-radius:20px;background:#fff6db;border:1px solid #e1bc69;padding:6px 14px;font-size:.85rem;font-weight:800;text-decoration:none;color:#684313;min-height:36px}
@@ -64,3 +64,5 @@ body:has(.island-launcher) .hub-footer{background:#fff0cd}
  body:has(.island-launcher) .onboarding{padding:12px;margin-bottom:12px}
 }
 @media(max-width:350px){.island-welcome h1{font-size:1.25rem}.adventure-filters button{font-size:.75rem}}
+
+.island-welcome h1{font-weight:800;letter-spacing:0}.island-app-copy h3{font-weight:700}
