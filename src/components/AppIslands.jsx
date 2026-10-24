@@ -12,6 +12,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Solar System Scavenger Hunt': ['games'],
   'Science Lagoon': ['learn'],
   'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
   'Math Market': ['games'], 'Word Quest': ['games'], RoboCalc: ['games'], Bloomora: ['games'],
