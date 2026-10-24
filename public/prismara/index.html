@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prismara — The Color & Shape Planet</title>
+<script src="js/tailwind.js"></script>
+<link rel="stylesheet" href="css/icons.css">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                prismara: {
+                    bg: '#0F0C20', card: '#1A1635', accent: '#6C5CE7',
+                    highlight: '#00CEC9', crimson: '#FF7675', azure: '#0984E3',
+                    emerald: '#00B894', amber: '#FDCB6E', violet: '#A29BFE'
+                }
+            },
+            fontFamily: { sans: ['Trebuchet MS','sans-serif'], display: ['Georgia','serif'] }
+        }
+    }
+};
+</script>
+<link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/lagoon.css">
+<link rel="stylesheet" href="css/viewport.css"><link rel="stylesheet" href="css/kids.css"><link rel="stylesheet" href="css/maps.css"></head>
+<body class="min-h-screen flex flex-col justify-between relative bg-gradient-to-b from-[#0F0C20] via-[#161233] to-[#0A0817]">
+
+<script src="js/audio.js"></script>
+
+<!-- HEADER -->
+<header class="w-full bg-[#1A1635]/90 border-b border-indigo-900/50 px-4 py-3 flex justify-between items-center z-40 backdrop-blur-md sticky top-0">
+    <div class="flex items-center space-x-3 cursor-pointer" onclick="game.goHome()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-teal-400 flex items-center justify-center shadow-lg animate-glow">
+            <i class="fa-solid font-bold text-white text-xl fa-gem"></i>
+        </div>
+        <div>
+            <h1 class="font-display font-bold text-xl tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-indigo-200 to-purple-300">
+                PRISMARA
+            </h1>
+            <p class="text-xs text-indigo-300 font-medium">A little island. A bright adventure.</p>
+        </div>
+    </div>
+    <div class="flex items-center space-x-3">
+        <div class="bg-[#100D25] border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center space-x-2">
+            <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+            <span id="global-stars" class="font-display text-amber-300 font-bold text-sm">0 / 36</span>
+        </div>
+        <div class="bg-[#100D25] border border-teal-500/30 px-3 py-1.5 rounded-full flex items-center space-x-2 hidden sm:flex">
+            <i class="fa-solid fa-fire text-teal-400 text-sm"></i>
+            <span id="global-streak" class="font-display text-teal-300 font-bold text-sm">0</span>
+        </div>
+        <button onclick="game.toggleTTS()" id="tts-btn" title="Toggle Read-Aloud" class="w-10 h-10 rounded-xl bg-indigo-950/80 border border-indigo-700/50 flex items-center justify-center text-teal-400 hover:text-white hover:border-teal-400 transition">
+            <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <button onclick="game.openDashboard()" title="Parent & Educator Dashboard" class="w-10 h-10 rounded-xl bg-indigo-950/80 border border-indigo-700/50 flex items-center justify-center text-indigo-200 hover:text-white hover:border-teal-400 transition">
+            <i class="fa-solid fa-chart-pie"></i>
+        </button>
+        <button onclick="game.openSettings()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-display text-sm font-semibold btn-prism flex items-center">
+            <i class="fa-solid fa-bars mr-1"></i><span class="hidden sm:inline">Menu</span>
+        </button>
+    </div>
+</header>
+
+<main id="app-container" aria-live="polite" class="flex-grow flex flex-col justify-center items-center px-4 py-6 max-w-7xl w-full mx-auto relative"></main>
+
+<!-- FOOTER HELPER -->
+<footer class="w-full bg-[#15112E] border-t border-indigo-900/60 py-3 px-6 z-30">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center space-x-3">
+            <div class="relative">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400 to-indigo-600 p-0.5 shadow-md">
+                    <div class="w-full h-full bg-[#1A1635] rounded-full flex items-center justify-center text-amber-300">
+                        <i class="fa-solid fa-hat-wizard text-2xl"></i>
+                    </div>
+                </div>
+                <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-[#15112E] rounded-full"></span>
+            </div>
+            <div>
+                <h4 class="font-display text-sm text-indigo-200 font-bold">Lantern-Keeper Lumis</h4>
+                <p id="helper-text" class="text-sm text-indigo-100 italic">"Welcome, Apprentice! Pick a zone to begin."</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <button onclick="audioSystem.speak(document.getElementById('helper-text').innerText)" class="px-3 py-1.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-800 text-indigo-200 text-xs font-semibold flex items-center">
+                <i class="fa-solid fa-read text-sm mr-1.5"></i> Read Aloud
+            </button>
+            <button onclick="game.requestHint()" id="hint-btn" class="hidden px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-display font-bold text-xs btn-prism flex items-center">
+                <i class="fa-solid fa-lightbulb mr-1.5"></i> Hint
+            </button>
+        </div>
+    </div>
+</footer>
+
+<div id="modal-overlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+    <div id="modal-content" role="dialog" aria-modal="true" aria-label="Game message" tabindex="-1" class="bg-[#1A1635] border border-indigo-500/40 rounded-3xl p-6 max-w-lg w-full shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto"></div>
+</div>
+
+<script src="js/missions.js"></script><script src="js/generator.js"></script><script src="js/game.js"></script><script src="js/lagoon.js"></script>
+<script src="js/kids.js"></script><script src="js/adventure.js"></script><script src="js/maps.js"></script><script src="js/viewport.js"></script></body>
+</html>
+
+
+
+

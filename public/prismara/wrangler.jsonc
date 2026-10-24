@@ -1,0 +1,9 @@
+{
+  "name": "atollingo-prismara",
+  "account_id": "20edb886e0249ed79cbb13af8397d308",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{"pattern": "prismara.atollingo.com", "custom_domain": true}],
+  "assets": {"directory": "./dist"}
+}
