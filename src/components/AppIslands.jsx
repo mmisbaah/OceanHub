@@ -12,6 +12,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Material Mission': ['games'],
   'Island Habitat Rescue': ['games'],
   'Solar System Scavenger Hunt': ['games'],
   'Science Lagoon': ['learn'],
