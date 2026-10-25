@@ -12,6 +12,9 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Raindrop Adventure': ['games'],
+  'Material Mission': ['games'],
+  'Island Habitat Rescue': ['games'],
   'Solar System Scavenger Hunt': ['games'],
   'Science Lagoon': ['learn'],
   'Robot Rescue': ['games'], Colorworld: ['games'], Colorwood: ['games'], 'Code Quest': ['games'],
