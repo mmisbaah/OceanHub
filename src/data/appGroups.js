@@ -15,7 +15,8 @@ export const appGroups = [
     "id": "science",
     "title": "Science",
     "apps": [
-      ["Science Lagoon", "Science lessons & investigations · Grades 1–6", "https://science.atollingo.com/", "🧪"]
+      ["Science Lagoon", "Science lessons & investigations · Grades 1–6", "https://science.atollingo.com/", "🧪"],
+      ["Solar System Scavenger Hunt", "Solve space clues & explore the solar system", "https://solar.atollingo.com/", "🪐"]
     ]
   },
   {
