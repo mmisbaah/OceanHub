@@ -22,7 +22,7 @@ const appTypes = {
   MathLagoon: ['learn','games'], 'Math Explorer': ['learn'], 'Maths Worksheets': ['worksheets'],
   OceanLearn: ['learn'], OceanPlay: ['games'], 'Atollingo Worksheets': ['worksheets'], OceanArabic: ['learn','games'],
 };
-const filters = [['learn','📚','Educational apps'],['games','🎮','Web games'],['worksheets','✏️','Worksheets'],['all','🏝️','All adventures']];
+const filters = [['learn','📚','Learning apps'],['games','🎮','Web games'],['worksheets','✏️','Worksheets'],['all','🏝️','All adventures']];
 export default function AppIslands() {
   const [type,setType] = useState('learn');
   const groups = appGroups.map(group=>({...group,apps:group.apps.filter(([name])=>type==='all'||appTypes[name].includes(type))})).filter(group=>group.apps.length);
