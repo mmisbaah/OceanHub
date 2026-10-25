@@ -18,7 +18,8 @@ export const appGroups = [
       ["Science Lagoon", "Science lessons & investigations · Grades 1–6", "https://science.atollingo.com/", "🧪"],
       ["Solar System Scavenger Hunt", "Solve space clues & explore the solar system", "https://solar.atollingo.com/", "🪐"],
       ["Island Habitat Rescue", "Restore island habitats · 66 science missions · Grades 1–6", "https://habitat.atollingo.com/", "🐢"],
-      ["Material Mission", "Test materials & improve an island school · 60 missions · Grades 1–6", "https://material-mission.atollingo.com/", "🔬"]
+      ["Material Mission", "Test materials & improve an island school · 60 missions · Grades 1–6", "https://material-mission.atollingo.com/", "🔬"],
+      ["Raindrop Adventure", "Explore the water cycle · 60 island missions · Grades 1–6", "https://raindrop-adventure.atollingo.com/", "💧"]
     ]
   },
   {

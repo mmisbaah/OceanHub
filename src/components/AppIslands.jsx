@@ -12,6 +12,7 @@ const illustrations = {
 };
 
 const appTypes = {
+  'Raindrop Adventure': ['games'],
   'Material Mission': ['games'],
   'Island Habitat Rescue': ['games'],
   'Solar System Scavenger Hunt': ['games'],
